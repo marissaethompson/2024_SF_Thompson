@@ -23,7 +23,7 @@ set seed 10027
 set sortseed 10027
 
 **** Globals (users will need to replace)
-global dir "/Users/marissathompson/Dropbox/_Research/segregation_conjoint/_post" 
+global dir .
 global data "${dir}/data/"
 global output "${dir}/output"
 
