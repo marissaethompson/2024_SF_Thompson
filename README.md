@@ -4,7 +4,7 @@ Title: The Effect of Academic Outcomes, Equity, and Student Demographics on Pare
 
 Journal: Social Forces
 
-Date: 2024 (Online First) 
+Date: 2024
 
 ReadMe Version: 01
 
