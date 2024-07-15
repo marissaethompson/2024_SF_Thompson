@@ -66,14 +66,15 @@ eststo `race': reg choice_clean growth_sch_std ach_sch_std stat_sch_std equity_s
 eststo Hisp: reg choice_clean growth_sch_std ach_sch_std stat_sch_std equity_sch_std ses_num_sch_std black_num_sch_std asian_num_sch_std hisp_num_sch_std if ethnicity=="Latino/Hispanic", robust cluster(id)
 
 
-coefplot  (model, mcolor(black) msymbol(Oh) mfcolor(black)  msize(vsmall) ciopts(color(black%30)) drop(_cons)) /// 
-	(White, mcolor(red) msymbol(Oh) mfcolor(red)  msize(vsmall) ciopts(color(red%30)) drop(_cons) xline(0) ) ///
-	(Black, mcolor(green) msymbol(Oh) mfcolor(green) msize(vsmall)  ciopts(color(green%30)) drop(_cons) ) ///
-	(Asian, mcolor(blue) msymbol(Oh) mfcolor(blue) msize(vsmall)  ciopts(color(blue%30)) drop(_cons) ) ///
-	(Hisp, mcolor(orange) msymbol(Oh) mfcolor(orange) msize(vsmall)  ciopts(color(orange%30)) drop(_cons) ) ///
-	, xline(0) plotlabels("All" "White" "Black" "Asian" "Latino/Hispanic") base graphregion(color(white)) ysize(6) xsize(4) xtitle("Average Marginal Component Effect")
+// Note that some versions of this figure appear in color. The code below produces the black & white friendly version of the plot for print publication 
+coefplot  model, bylabel(All) mcolor(black) msymbol(Oh) mfcolor(black)  msize(vsmall) ciopts(color(black%70)) drop(_cons) || /// 
+	White, bylabel(White) mcolor(black) msymbol(Oh) mfcolor(black)  msize(vsmall) ciopts(color(black%70)) drop(_cons)   || ///
+	Black, bylabel(Black) mcolor(black) msymbol(Oh) mfcolor(black)  msize(vsmall) ciopts(color(black%70)) drop(_cons)   || ///
+	Asian, bylabel(Asian) mcolor(black) msymbol(Oh) mfcolor(black)  msize(vsmall) ciopts(color(black%70)) drop(_cons)   || ///
+	Hisp, bylabel(Latino/Hispanic) mcolor(black) msymbol(Oh) mfcolor(black)  msize(vsmall) ciopts(color(black%70)) drop(_cons)  ||   ///
+	, graphregion(color(white)) xline(0, lcolor(edkblue%35) lwidth(vthin) lpattern(dash))  ysize(4) xsize(6) xtitle("Average Marginal Component Effect") byopts(compact cols(3))
 
-graph export "figure_2_$date.png", replace
+graph export "figure_1_$date.png", replace
 
 
 *****************************
